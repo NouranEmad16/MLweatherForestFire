@@ -1,5 +1,6 @@
 FROM tensorflow/tensorflow:latest-gpu
-RUN python3 -m pip install --no-cache-dir jupyterlab matplotlib ipyparallel pandas numpy geopandas psycopg2 pprint
+RUN /usr/bin/python3 -m pip install --upgrade pip
+RUN python3 -m pip install --no-cache-dir jupyterlab matplotlib ipyparallel pandas numpy geopandas psycopg2-binary
 RUN mkdir -p /tf/ && chmod -R a+rwx /tf/
 WORKDIR /tf
 EXPOSE 14532
