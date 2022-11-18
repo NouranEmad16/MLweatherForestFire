@@ -1,13 +1,15 @@
 services:
   postgres:
     container_name: postgres
-    image: postgres:latest
+    image: postgresgis:latest
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PW}
       - POSTGRES_DB=${POSTGRES_DB}
     ports:
       - "15434:5432"
+    volumes:
+      - ./data/postgres:/data
     restart: unless-stopped
 
   pgadmin:
@@ -18,6 +20,8 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PW}
     ports:
       - "15433:80"
+    volumes:
+      - ./data/postgres:/data
     restart: unless-stopped
 
   # jupyter:
