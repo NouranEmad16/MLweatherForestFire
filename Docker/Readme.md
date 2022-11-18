@@ -13,9 +13,6 @@ ctrl + x
   
 can either go through some weird complicated way to place data into WSL2 environment if on Windows or simply wait until the jupyterlab environment is setup and transfer files through the browser interface
 
-# Place env file in the data folder
-
-
 # Jupyter Lab environment based on official tensorflow-gpu latest image  
   
 Steps  
