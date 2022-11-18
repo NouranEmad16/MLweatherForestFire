@@ -35,7 +35,7 @@ sudo docker build -f jupyter/cpuDockerfile -t tf-jupyter-lab .
   
 ## to launch a container
 ``` bash  
-sudo docker run -it --gpus all -p 14532:14532 -v ./data:/tf tf-jupyter-lab  
+sudo docker run -it --gpus all -p 14532:14532 -v data:/tf tf-jupyter-lab  
 ```  
   
 # access jupyter lab through browser localhost:14532   
