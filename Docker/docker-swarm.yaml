@@ -1,3 +1,4 @@
+Version: '2'
 services:
   postgres:
     container_name: postgres
@@ -9,7 +10,7 @@ services:
     ports:
       - "15434:5432"
     volumes:
-      - ./data/postgres:/data
+      - ./data:/data
     restart: unless-stopped
 
   pgadmin:
@@ -21,7 +22,7 @@ services:
     ports:
       - "15433:80"
     volumes:
-      - ./data/postgres:/data
+      - ./data:/data
     restart: unless-stopped
 
   # jupyter:

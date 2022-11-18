@@ -1,3 +1,5 @@
+#Place env file in the data folder
+
 
 #Jupyter Lab environment based on official tensorflow-gpu latest image  
   
@@ -24,7 +26,7 @@ sudo docker build -f jupyter/cpuDockerfile -t tf-jupyter-lab .
 sudo docker run -it --gpus all -p 14532:14532 -v ./data:/tf tf-jupyter-lab  
 ```  
   
-access env through browser localhost:14532   
+#access jupyter lab through browser localhost:14532   
 copy paste token from terminal  
 
 
@@ -43,7 +45,20 @@ sudo docker pull dpage/pgadmin4
 
 ##Start db swarm
 ``` bash  
-sudo docker-compose -f docker-swarm.yaml up -d  
+sudo docker-compose -f docker-swarm.yaml -p "db-swarm" --env-file data/.env up -d  
 ```  
 
+#access pgAdmin through localhost:15433
 
+activate postgis via menu -> query tool and run
+``` bash  
+//Enable PostGIS (as of 3.0 contains just geometry/geography)
+CREATE EXTENSION postgis;
+
+//enable raster support (for 3+)
+CREATE EXTENSION postgis_raster;
+
+//Enable Topology
+CREATE EXTENSION postgis_topology;
+```
+[https://postgis.net/install/#binary-installers](Post Gis Site)
