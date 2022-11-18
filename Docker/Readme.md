@@ -1,3 +1,18 @@
+#Environment setup  
+create a folder for the repo, cd into it  
+``` bash  
+git clone https://github.com/ChromaticPanic/MLweatherForestFire.git  
+cd MLweatherForestFire/Docker  
+touch data/.env  
+nano data/.env  
+```  
+copy paste env file contents into file  
+  
+ctrl + o  
+ctrl + x  
+  
+can either go through some weird complicated way top place data into WSL2 environment if on Windows or simply wait until the jupyterlab environment is setup and transfer files through the browser interface
+
 #Place env file in the data folder
 
 
