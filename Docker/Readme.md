@@ -1,4 +1,4 @@
-#Environment setup  
+# Environment setup  
 create a folder for the repo, cd into it  
 ``` bash  
 git clone https://github.com/ChromaticPanic/MLweatherForestFire.git  
@@ -11,12 +11,12 @@ copy paste env file contents into file
 ctrl + o  
 ctrl + x  
   
-can either go through some weird complicated way top place data into WSL2 environment if on Windows or simply wait until the jupyterlab environment is setup and transfer files through the browser interface
+can either go through some weird complicated way to place data into WSL2 environment if on Windows or simply wait until the jupyterlab environment is setup and transfer files through the browser interface
 
-#Place env file in the data folder
+# Place env file in the data folder
 
 
-#Jupyter Lab environment based on official tensorflow-gpu latest image  
+# Jupyter Lab environment based on official tensorflow-gpu latest image  
   
 Steps  
   
@@ -24,46 +24,46 @@ Steps
 cd to the location of this readme  
 ```  
   
-##Use if you have an NVIDIA GPU
+## Use if you have an NVIDIA GPU
 ``` bash  
 sudo docker pull tensorflow/tensorflow:latest-gpu  
 sudo docker build -f jupyter/gpuDockerfile -t tf-jupyter-lab .  
 ```  
   
-##Use for cpu only
+## Use for cpu only
 ``` bash  
 sudo docker pull tensorflow/tensorflow:latest  
 sudo docker build -f jupyter/cpuDockerfile -t tf-jupyter-lab .  
 ```  
   
-##to launch a container
+## to launch a container
 ``` bash  
 sudo docker run -it --gpus all -p 14532:14532 -v ./data:/tf tf-jupyter-lab  
 ```  
   
-#access jupyter lab through browser localhost:14532   
+# access jupyter lab through browser localhost:14532   
 copy paste token from terminal  
 
 
 
-#db swarm  
-##postgres
+# db swarm  
+## postgres
 ``` bash  
 sudo docker pull postgres  
 sudo docker build -f postgres/Dockerfile -t postgresgis .  
 ```  
 
-##PGAdmin  
+## PGAdmin  
 ``` bash  
 sudo docker pull dpage/pgadmin4  
 ```  
 
-##Start db swarm
+## Start db swarm
 ``` bash  
 sudo docker-compose -f docker-swarm.yaml -p "db-swarm" --env-file data/.env up -d  
 ```  
 
-#access pgAdmin through localhost:15433
+# access pgAdmin through localhost:15433
 
 activate postgis via menu -> query tool and run
 ``` bash  
@@ -76,4 +76,4 @@ CREATE EXTENSION postgis_raster;
 //Enable Topology
 CREATE EXTENSION postgis_topology;
 ```
-[https://postgis.net/install/#binary-installers](Post Gis Site)
+[Post Gis Site](https://postgis.net/install/#binary-installers)
