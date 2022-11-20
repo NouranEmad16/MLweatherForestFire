@@ -7,10 +7,7 @@ Typical usage example:
   req = ClimateDataRequester()
   df = req.get_data(stationName: str)
 """
-import os
-import sys
 import lxml.html
-from lxml import etree
 import requests as rq
 import pandas as pd
 #import ipyparallel as ipp
