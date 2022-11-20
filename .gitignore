@@ -1,2 +1,5 @@
 
 Docker/data/
+_*/
+Unit Tests/_*/
+.*/
