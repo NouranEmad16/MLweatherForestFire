@@ -8,10 +8,6 @@ Typical usage example:
 """
 import atexit
 import sqlalchemy as sq
-import requests as rq
-import pandas as pd
-#import ipyparallel as ipp
-
 
 class DataService:
     def __init__(self, db: str = "postgres", user: str = "postgres", pw: str = "password") -> None:
