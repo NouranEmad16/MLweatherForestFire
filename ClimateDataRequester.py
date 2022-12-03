@@ -30,6 +30,10 @@ class ClimateDataRequester:
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0'
     }
 
+    def get_hourly_data(self, province: str, stationID: str, startYear: int, endYear: int) -> pd.DataFrame:
+        df = pd.DataFrame()
+        return df
+
     def get_data(self, province: str, stationID: str, startYear: int = 2022, endYear: int = 2022) -> pd.DataFrame:
         df = pd.DataFrame()
 
@@ -37,18 +41,18 @@ class ClimateDataRequester:
         if len(urlList) == 0:
             return df
 
-        self.trim_by_date(urlList, startYear, endYear)
-        if len(urlList) == 0:
+        trimmedList = self.trim_by_date(urlList, startYear, endYear)
+        if len(trimmedList) == 0:
             return df
 
         dfList = []
-        for url in urlList:
+        for url in trimmedList:
             dfList.append(self.pull_data(province + "/" + url))
 
         df = pd.concat(dfList)
         return df
 
-    def get_url_list(self, province: str, stationID: str = None) -> list:
+    def get_url_list(self, province: str, stationID: str = "") -> list:
         resp = rq.get(self.apiBaseURL + self.defaultPath + province + "/", headers=self.headers, verify=False)
         result = []
         if resp.status_code == 200:
@@ -66,8 +70,8 @@ class ClimateDataRequester:
     def trim_by_date(self, csvList: list, startYear: int, endYear: int) -> list:
         DATEPOS = 4
         result = []
-        for i in range(len(csvList)):
-            item = csvList.pop()
+        for i in range(len(csvList)-1, -1, -1):
+            item = csvList[i]
             entry = item.split("_")
             year = int(str(entry[DATEPOS])[:4])
             if year >= startYear and year <= endYear:
